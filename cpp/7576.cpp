@@ -50,8 +50,8 @@ int main() {
                 isTrue = true;
         }
     } 
-    if (isTrue) cout << 0;
+    if (isTrue) cout << -1;
     else cout << result;
-    
+
     return 0;
 }
