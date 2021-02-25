@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+using ll = long long;
+ll a, b, c;
 
-int a, b, c;
-
-int solution(int a, int b, int c) {
+ll solution(ll a, ll b, ll c) {
     if (b == 1) return a % c;
-    int val = solution(a, b/2, c);
+    ll val = solution(a, b/2, c);
     val = val * val % c;
     if (b % 2 == 0) return val;
     return val * a % c;
