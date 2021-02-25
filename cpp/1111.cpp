@@ -6,6 +6,8 @@ int arr[51];
 int n;
 
 void sol(int n) {
+    int a, b;
+
     if (n < 3) {
         if (n == 2 && arr[0] == arr[1]) {
             cout << arr[0];
@@ -14,17 +16,36 @@ void sol(int n) {
         cout << 'A';
         return;
     }
-    int i = arr[1] - arr[0];
-    int j = arr[2] - arr[1];
-    if (j % i) {
-        cout << 'B';
-        return;
+    if (arr[0] == arr[1]) {
+        if (arr[1] != arr[2]) {
+            cout << 'B';
+            return;
+        }
+        a = 1;
+        b = 0;
+    } else {
+        int i = arr[1] - arr[0];
+        int j = arr[2] - arr[1];
+         if (j % i) {
+             cout << 'B';
+             return;
+        }
+        a = j / i;
+        b = arr[1] - arr[0] * a;
     }
-    int a = j / i;
-    int b = arr[1] - arr[0] * a;
+    
+    bool isTrue = true;
+    for (int i = 3; i < n; i++) {
+        if (arr[i] != arr[i - 1] * a + b) {
+            isTrue = false;
+            break;
+        }
+    }
 
-    cout << arr[n - 1] * a + b;
+    if (isTrue) cout << arr[n - 1] * a + b;
+    else cout << 'B';
 }
+
 int main(void) {
     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
